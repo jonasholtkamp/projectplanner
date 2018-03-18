@@ -17,11 +17,18 @@ import java.util.*
 class EmployeeController(val employeeRepository: EmployeeRepository) {
 
     @GetMapping("/employee")
-    fun greeting(@RequestParam id: UUID, model: Model): ModelAndView? {
+    fun employee(@RequestParam id: UUID, model: Model): ModelAndView? {
         val employee = employeeRepository.findById(id)
 
         return employee
                 .map { e -> ModelAndView("employee", mapOf(Pair("employee", e))) }
                 .orElseThrow { EmployeeNotFoundException(id) }
+    }
+
+    @GetMapping("/employees")
+    fun employees(): ModelAndView? {
+        val employees = employeeRepository.findAll()
+
+        return ModelAndView("employees", mapOf(Pair("employees", employees)))
     }
 }

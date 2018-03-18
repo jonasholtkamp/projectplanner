@@ -9,4 +9,5 @@ import java.util.*
  */
 data class Employee(val firstName: String, val lastName: String, @Id val id: UUID = UUID.randomUUID()) {
 
+    fun getFullName() = String.format("%s %s", firstName, lastName)
 }

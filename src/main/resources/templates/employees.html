@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="employees" type="java.util.List"*/-->
+<!--/*@thymesVar id="employee" type="de.jonasholtkamp.projectplanner.model.Employee"*/-->
+<head>
+    <title th:text="Employees"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Employees</h1>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>First name</th>
+        <th>Last name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee,iterator : ${employees}">
+        <td><a th:text="${iterator.count}" th:href="@{/employee(id=${employee.id})}"></a></td>
+        <td th:text="${employee.firstName}"></td>
+        <td th:text="${employee.lastName}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

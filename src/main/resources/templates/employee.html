@@ -1,11 +1,22 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="employee" type="de.jonasholtkamp.projectplanner.model.Employee"*/-->
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title th:text="'Employee ' + ${employee.fullName}">Employee</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<!--/*@thymesVar id="employee" type="de.jonasholtkamp.projectplanner.model.Employee"*/-->
-<p th:text="'Hello, ' + ${employee.firstName} + '!'"></p>
+<p><a th:href="@{/employees}">&leftarrow; Overview</a></p>
+<h1>Employee</h1>
+<table>
+    <tr>
+        <td>First name:</td>
+        <td th:text="${employee.firstName}"></td>
+    </tr>
+    <tr>
+        <td>Last name:</td>
+        <td th:text="${employee.lastName}"></td>
+    </tr>
+</table>
 </body>
 </html>
