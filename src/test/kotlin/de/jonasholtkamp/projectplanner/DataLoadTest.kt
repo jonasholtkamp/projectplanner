@@ -22,7 +22,13 @@ class DataLoadTest {
     lateinit var employeeRepository: EmployeeRepository
 
     @Test
-    fun name() {
+    fun `the initially loaded enitities should be available`() {
+        val foundEmployee = employeeRepository.findById(UUID_JONAS)
+        assertThat(foundEmployee.isPresent).isTrue()
+    }
+
+    @Test
+    fun `easy insertions should yield easy retrievals`() {
         val id = UUID.randomUUID()
         val employee = Employee("Jonas", "Holtkamp", id)
         employeeRepository.save(employee)
