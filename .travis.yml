@@ -18,8 +18,8 @@ deploy:
   secret_access_key: $AWS_SECRET_KEY
   local_dir: dpl_cd_upload
   skip_cleanup: true
-  on: &2
-    repo: jonasholtkamp/projectplanner
+  on:
+    all_branches: true
   bucket: de.jh.projectplanner
   region: eu-west-1
 - provider: codedeploy
@@ -31,7 +31,8 @@ deploy:
   application: de.jh.projectplanner
   deployment_group: de.jh.projectplanner
   region: eu-west-1
-  on: *2
+  on:
+    all_branches: true
 
 script:
   - zip -r latest *
