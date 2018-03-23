@@ -19,7 +19,7 @@ deploy:
   secret_access_key: $AWS_SECRET_KEY
   bucket: de.jh.projectplanner-bucket
   local_dir: dpl_cd_upload
-  skip_cleanup: true
+  skip_cleanup: false
   on:
     all_branches: true
 - provider: codedeploy
@@ -34,6 +34,7 @@ deploy:
     all_branches: true
 
 script:
-  - zip -r latest build/libs/*jar appspec.yml
+  - mv build/libs/*jar app.jar
+  - zip -r latest app.jar appspec.yml
   - mkdir -p dpl_cd_upload
   - mv latest.zip dpl_cd_upload
