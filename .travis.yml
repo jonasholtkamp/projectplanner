@@ -18,7 +18,7 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
   bucket: de.jh.projectplanner-bucket
-  local_dir: build/libs/
+  local_dir: dpl_cd_upload
   skip_cleanup: true
   on:
     all_branches: true
@@ -27,12 +27,13 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
   bucket: de.jh.projectplanner-bucket
-  key: app.jar
-  bundle_type: jar
+  key: latest.zip
   application: de.jh.projectplanner
   deployment_group: de.jh.projectplanner
   on:
     all_branches: true
 
 script:
-  - mv build/libs/*jar build/libs/app.jar
+  - zip -r latest build/libs/*jar appspec.yml
+  - mkdir -p dpl_cd_upload
+  - mv latest.zip dpl_cd_upload
