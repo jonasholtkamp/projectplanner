@@ -19,7 +19,7 @@ deploy:
   secret_access_key: $AWS_SECRET_KEY
   bucket: de.jh.projectplanner-bucket
   local_dir: dpl_cd_upload
-  skip_cleanup: false
+  skip_cleanup: true
   on:
     all_branches: true
 - provider: codedeploy
