@@ -20,12 +20,12 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
-  bucket: de.jh.projectplanner
+  bucket: de.jh.projectplanner-bucket
   region: eu-west-1
 - provider: codedeploy
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
-  bucket: de.jh.projectplanner
+  bucket: de.jh.projectplanner-bucket
   key: latest.zip
   bundle_type: zip
   application: de.jh.projectplanner
